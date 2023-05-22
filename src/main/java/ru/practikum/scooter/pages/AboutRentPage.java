@@ -1,6 +1,7 @@
 package ru.practikum.scooter.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
@@ -42,20 +43,22 @@ public class AboutRentPage {
     public void clickOnRentalPeriod () {
         driver.findElement(fieldRentalPeriod).click();
     }
-    public void chooseRandomRentalPeriod () {
-        //driver.findElement(fieldRentalPeriod).click();
+    public void chooseRentalPeriod (int rentalPeriod) {
+        rentalPeriod--;
         List<WebElement> listPeriod = driver.findElements(listRentalPeriod);
-        //int index = (int) (Math.random() * 6);
-        //добавить прокрутку до нужного элемента
-        listPeriod.get(3).click();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", listPeriod.get(rentalPeriod));
+        listPeriod.get(rentalPeriod).click();
     }
 
-    public void chooseRandomScooterColor () {
-        WebElement black  = driver.findElement(blackScooterColor);
-        WebElement grey = driver.findElement(greyScooterColor);
-        WebElement[] listColor = new WebElement[] {black, grey};
-        int index = (int) (Math.random() * 2);
-        listColor[index].click();
+    public void chooseScooterColor (String color) {
+        if(color.equals("black")) {
+            driver.findElement(blackScooterColor).click();
+        } else if (color.equals("grey")) {
+            driver.findElement(greyScooterColor).click();
+        }else if (color.equals("twoColors")){
+            driver.findElement(blackScooterColor).click();
+            driver.findElement(greyScooterColor).click();
+        }
     }
 
     public void fillCommentForCourier (String comment) {

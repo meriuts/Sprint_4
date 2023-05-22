@@ -39,12 +39,11 @@ public class ForWhomScooterPage {
         driver.findElement(fieldAddress).click();
         driver.findElement(fieldAddress).sendKeys(address);
     }
-    public void chooseRandomMetroStation () {
+    public void chooseMetroStation (int indexOfMetroStation) {
         driver.findElement(fieldMetroStation).click();
         List<WebElement> listOfStation = driver.findElements(listOfdMetroStation);
-        int index = (int) (Math.random() * 200);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", listOfStation.get(index));
-        listOfStation.get(index).click();
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", listOfStation.get(indexOfMetroStation));
+        listOfStation.get(indexOfMetroStation).click();
     }
     public void fillPhoneNumberForCourier (String phoneNumber) {
         driver.findElement(fieldPhoneNumberForCourier).sendKeys(phoneNumber);

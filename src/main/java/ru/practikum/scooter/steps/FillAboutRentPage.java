@@ -9,11 +9,11 @@ public class FillAboutRentPage extends AboutRentPage {
         super(driver);
     }
 
-    public void fillAboutRentPage (String deliveryDate, String comment) {
+    public void fillAboutRentPage (String deliveryDate, int rentalPeriod, String color, String comment) {
         fillDeliveryDate(deliveryDate);
         clickOnRentalPeriod();
-        chooseRandomRentalPeriod();
-        chooseRandomScooterColor();
+        chooseRentalPeriod(rentalPeriod);
+        chooseScooterColor(color);
         fillCommentForCourier(comment);
         clickOnOrderButton();
     }

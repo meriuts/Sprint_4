@@ -7,11 +7,11 @@ public class FillForWhomScooterPage extends ForWhomScooterPage {
     public FillForWhomScooterPage (WebDriver driver) {
         super(driver);
     }
-    public void fillForWhomScooterPage  (String name, String surname, String address, String phoneNumberForCourier) {
+    public void fillForWhomScooterPage  (String name, String surname, String address, int indexOfMetroStation, String phoneNumberForCourier) {
         fillNameField(name);
         fillSurnameField(surname);
         fillAddressField(address);
-        chooseRandomMetroStation();
+        chooseMetroStation(indexOfMetroStation);
         fillPhoneNumberForCourier(phoneNumberForCourier);
         clickOnForWhomScooterButtonNext();
 
